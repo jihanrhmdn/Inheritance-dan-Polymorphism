@@ -52,24 +52,73 @@ Silinder     : warna = ungu, volume = 62.83
 
 ![Hasil menjalankan program](screenshot.png)
 
-## Format `printInfo()`
+## Penerapan Konsep PBO pada Kode
 
-Semua kelas memakai format yang sama: nama kelas rata kiri (lebar 13 karakter), lalu `:`, lalu isinya. Nilai luas dan volume ditampilkan 2 angka di belakang koma.
+### 1. Encapsulation
 
-| Kelas | Format |
-|-------|--------|
-| `Bentuk` | `Bentuk       : warna = [warna]` |
-| `BujurSangkar` | `BujurSangkar : warna = [warna], luas = [luas]` |
-| `Lingkaran` | `Lingkaran    : warna = [warna], luas = [luas]` |
-| `Silinder` | `Silinder     : warna = [warna], volume = [volume]` |
+Atribut dibuat `private` sehingga tidak bisa diubah langsung dari luar kelas. Akses dilakukan lewat getter dan setter.
 
-## Konsep PBO yang Dipakai
+Contoh di `Lingkaran.java`:
 
-- **Encapsulation**: atribut `sisi`, `radius`, dan `tinggi` bersifat `private` dan diakses lewat getter/setter.
-- **Inheritance**: `BujurSangkar` dan `Lingkaran` mewarisi `Bentuk`, sedangkan `Silinder` mewarisi `Lingkaran`.
-- **Polymorphism**: setiap subclass menimpa (`@Override`) method `printInfo()` dengan tampilan sendiri.
-- **Constructor chaining**: constructor subclass memanggil `super(...)` di baris pertama untuk mengisi atribut milik induk.
-- **Reuse kode**: `Silinder.hitungVolume()` memakai `hitungLuas()` dari `Lingkaran` (luas alas × tinggi).
+```java
+private double radius;
+
+public double getRadius() {
+    return radius;
+}
+
+public void setRadius(double r) {
+    this.radius = r;
+}
+```
+
+| Kelas | Atribut | Modifier | Akses lewat |
+|-------|---------|----------|-------------|
+| `Bentuk` | `warna` | `protected` | `getWarna()`, `setWarna()` |
+| `BujurSangkar` | `sisi` | `private` | `getSisi()`, `setSisi()` |
+| `Lingkaran` | `radius` | `private` | `getRadius()`, `setRadius()` |
+| `Silinder` | `tinggi` | `private` | `getTinggi()`, `setTinggi()` |
+
+`Main.java` memakai setter ini, misalnya `s.setTinggi(5)`, `s.setRadius(2)`, dan `s.setWarna("ungu")`.
+
+### 2. Inheritance
+
+Subclass mewarisi atribut dan method dari superclass memakai `extends`, dan memanggil constructor induk lewat `super(...)`.
+
+```java
+public class Lingkaran extends Bentuk {
+    public Lingkaran(double radius, String warna) {
+        super(warna);          // mengisi warna milik Bentuk
+        this.radius = radius;
+    }
+}
+
+public class Silinder extends Lingkaran {
+    public double hitungVolume() {
+        return hitungLuas() * tinggi;   // hitungLuas() diwarisi dari Lingkaran
+    }
+}
+```
+
+- `BujurSangkar` dan `Lingkaran` mewarisi `Bentuk` (atribut `warna`, `getWarna()`, `setWarna()`).
+- `Silinder` mewarisi `Lingkaran`, sehingga ikut mewarisi `radius`, `hitungLuas()`, dan `warna`.
+
+### 3. Polymorphism
+
+Setiap subclass menimpa (`@Override`) method `printInfo()` dari `Bentuk`. Nama method sama, tetapi perilakunya berbeda tergantung kelasnya.
+
+```java
+// Bentuk.java
+public void printInfo() { ... }
+
+// Silinder.java
+@Override
+public void printInfo() {
+    System.out.printf("%-13s: warna = %s, volume = %.2f%n", "Silinder", warna, hitungVolume());
+}
+```
+
+Pemanggilan `printInfo()` pada objek `Bentuk`, `BujurSangkar`, `Lingkaran`, dan `Silinder` di `Main.java` menghasilkan tampilan yang berbeda-beda.
 
 ## Catatan
 
