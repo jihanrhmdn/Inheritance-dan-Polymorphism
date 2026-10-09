@@ -41,25 +41,27 @@ java Main
 ## Contoh Output
 
 ```
-Bentuk berwarna merah
-Bujursangkar berwarna biru, luas = 16.0
-Lingkaran hijau, luas = 153.93791
-Silinder warna kuning, volume = 1539.3790999999999
-Silinder warna ungu, volume = 62.8318
+Bentuk       : warna = merah
+BujurSangkar : warna = biru, luas = 16.00
+Lingkaran    : warna = hijau, luas = 153.94
+Silinder     : warna = kuning, volume = 1539.38
+Silinder     : warna = ungu, volume = 62.83
 ```
 
 ## Screenshot Hasil Program
 
-![Hasil menjalankan program](screenshoot.png)
+![Hasil menjalankan program](screenshot.png)
 
 ## Format `printInfo()`
 
+Semua kelas memakai format yang sama: nama kelas rata kiri (lebar 13 karakter), lalu `:`, lalu isinya. Nilai luas dan volume ditampilkan 2 angka di belakang koma.
+
 | Kelas | Format |
 |-------|--------|
-| `Bentuk` | `Bentuk berwarna [warna]` |
-| `BujurSangkar` | `Bujursangkar berwarna [warna], luas = [luas]` |
-| `Lingkaran` | `Lingkaran [warna], luas = [luas]` |
-| `Silinder` | `Silinder warna [warna], volume = [volume]` |
+| `Bentuk` | `Bentuk       : warna = [warna]` |
+| `BujurSangkar` | `BujurSangkar : warna = [warna], luas = [luas]` |
+| `Lingkaran` | `Lingkaran    : warna = [warna], luas = [luas]` |
+| `Silinder` | `Silinder     : warna = [warna], volume = [volume]` |
 
 ## Konsep PBO yang Dipakai
 
