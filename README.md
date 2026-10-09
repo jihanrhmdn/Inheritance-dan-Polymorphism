@@ -50,7 +50,7 @@ Silinder warna ungu, volume = 62.8318
 
 ## Screenshot Hasil Program
 
-![Hasil menjalankan program](screenshots.png)
+![Hasil menjalankan program](screenshoot.png)
 
 ## Format `printInfo()`
 
