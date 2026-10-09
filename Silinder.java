@@ -21,6 +21,6 @@ public class Silinder extends Lingkaran {
 
     @Override
     public void printInfo() {
-        System.out.println("Silinder warna " + warna + ", volume = " + hitungVolume());
+        System.out.printf("%-13s: warna = %s, volume = %.2f%n", "Silinder", warna, hitungVolume());
     }
 }

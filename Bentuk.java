@@ -16,6 +16,6 @@ public class Bentuk {
     }
 
     public void printInfo() {
-        System.out.println("Bentuk berwarna " + warna);
+        System.out.printf("%-13s: warna = %s%n", "Bentuk", warna);
     }
 }

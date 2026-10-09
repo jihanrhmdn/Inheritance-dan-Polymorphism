@@ -20,6 +20,6 @@ public class BujurSangkar extends Bentuk {
 
     @Override
     public void printInfo() {
-        System.out.println("Bujursangkar berwarna " + warna + ", luas = " + hitungLuas());
+        System.out.printf("%-13s: warna = %s, luas = %.2f%n", "BujurSangkar", warna, hitungLuas());
     }
 }

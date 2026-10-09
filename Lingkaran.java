@@ -22,6 +22,6 @@ public class Lingkaran extends Bentuk {
 
     @Override
     public void printInfo() {
-        System.out.println("Lingkaran " + warna + ", luas = " + hitungLuas());
+        System.out.printf("%-13s: warna = %s, luas = %.2f%n", "Lingkaran", warna, hitungLuas());
     }
 }
